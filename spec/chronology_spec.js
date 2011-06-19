@@ -58,5 +58,10 @@ describe('chronology', function() {
     it('should handle halves', function() {
         expect(numerizer.numerize('one and a half')).toBe('1.5');    
         expect(numerizer.numerize('thirty-three and a half')).toBe('33.5');
+    });
+    
+    it('should handle ands', function() {
+        expect(numerizer.numerize('one-thousand and one')).toBe('1001');
+        expect(numerizer.numerize('one-thousand and forty-two')).toBe('1042');        
     });    
 });
