@@ -54,4 +54,9 @@ describe('chronology', function() {
     it('should numerize big prefixes', function() {
         expect(numerizer.numerize('one-thousand')).toBe('1000');
     });
+    
+    it('should handle halves', function() {
+        expect(numerizer.numerize('one and a half')).toBe('1.5');    
+        expect(numerizer.numerize('thirty-three and a half')).toBe('33.5');
+    });    
 });
