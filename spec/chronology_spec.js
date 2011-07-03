@@ -63,5 +63,9 @@ describe('chronology', function() {
     it('should handle ands', function() {
         expect(numerizer.numerize('one-thousand and one')).toBe('1001');
         expect(numerizer.numerize('one-thousand and forty-two')).toBe('1042');        
+    });
+    
+    it('should', function() {
+        expect(chronology.parse('now')).toBe(now);
     });    
 });
