@@ -67,5 +67,9 @@ describe('chronology', function() {
     
     it('should', function() {
         expect(chronology.parse('now')).toBe(now);
+    });
+    
+    it('should', function() {
+        expect(chronology.parse('tonight at 7pm')).toBe(now);
     });    
 });
