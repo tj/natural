@@ -36,6 +36,13 @@ describe('bayes classifier', function() {
             expect(classifier.classify('i am short silver')).toBe('sell');
             expect(classifier.classify('i am long silver')).toBe('buy');        
         });
+    
+        it('should provide a method to retrieve both classname and probability', function() {
+            expect(classifier.getClassification('i am short silver').className).toBe('sell');
+            expect(classifier.getClassification('i am long silver').className).toBe('buy');        
+            expect(classifier.getClassification('i am short silver').value).toBe(0.25);
+            expect(classifier.getClassification('i am long silver').value).toBe(0.25);
+        });
             
         it('should classify arrays', function() {
             expect(classifier.classify(['short', 'silver'])).toBe('sell');
@@ -83,6 +90,36 @@ describe('bayes classifier', function() {
                 asyncSpecDone();
             });
             asyncSpecWait();
+        });
+
+        it('should deserialize a classifier', function() {
+          var classifier = new natural.BayesClassifier();
+
+          classifier.train([{classification: 'buy', text: ['long', 'qqqq']},
+	    {classification: 'buy', text: "buy the q's"},
+ 	    {classification: 'sell', text: "short gold"},
+	    {classification: 'sell', text: ['sell', 'gold']}
+	  ]);
+         
+	  var raw = JSON.stringify(classifier);
+	  var restoredClassifier = natural.BayesClassifier.restore(raw);
+	  expect(restoredClassifier.classify('i am short silver')).toBe('sell');
+	  expect(restoredClassifier.classify('i am long silver')).toBe('buy');	  
+        });
+
+        it('should rebuild a classifier', function() {
+          var classifier = new natural.BayesClassifier();
+
+          classifier.train([{classification: 'buy', text: ['long', 'qqqq']},
+	    {classification: 'buy', text: "buy the q's"},
+ 	    {classification: 'sell', text: "short gold"},
+	    {classification: 'sell', text: ['sell', 'gold']}
+	  ]);
+         
+	  var raw = JSON.stringify(classifier);
+	  var restoredClassifier = natural.BayesClassifier.restore(JSON.parse(raw));
+	  expect(restoredClassifier.classify('i am short silver')).toBe('sell');
+	  expect(restoredClassifier.classify('i am long silver')).toBe('buy');	  
         });
     });
 });
