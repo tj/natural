@@ -44,7 +44,7 @@ describe('chronology', function() {
     });
     
     it('should numerize tens prefixes alone', function() {
-        //expect(numerizer.numerize('blah blah thirty blah blah thirty blah blah')).toBe('blah blah 30 blah blah 30 blah blah');
+        expect(numerizer.numerize('blah blah thirty blah blah thirty blah blah')).toBe('blah blah 30 blah blah 30 blah blah');
     });
 
     it('should numerize tens prefixes', function() {
