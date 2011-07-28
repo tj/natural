@@ -1,6 +1,6 @@
 
 // single word
-
+console.log(stem('counting'));
 suite.bench('stem() word', function(next){
   stem('counting');
   next();

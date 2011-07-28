@@ -35,8 +35,8 @@ suite = new uubench.Suite({
   }
 });
 
-require('./metaphone');
-require('./soundex');
+// require('./metaphone');
+// require('./soundex');
 require('./porter-stemmer');
 
 suite.run();
