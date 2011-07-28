@@ -9,6 +9,7 @@ var uubench = require('uubench')
 fs = require('fs');
 metaphone = natural.Metaphone.process;
 soundex = natural.SoundEx.process;
+stem = natural.PorterStemmer.stem;
 
 function pad(str, width) {
   return Array(width - str.length + 1).join(' ') + str;
@@ -36,5 +37,6 @@ suite = new uubench.Suite({
 
 require('./metaphone');
 require('./soundex');
+require('./porter-stemmer');
 
 suite.run();
