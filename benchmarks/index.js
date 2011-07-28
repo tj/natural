@@ -15,6 +15,8 @@ function pad(str, width) {
 }
 
 suite = new uubench.Suite({
+  min: 200,
+
   start: function(){
     console.log();
   },
